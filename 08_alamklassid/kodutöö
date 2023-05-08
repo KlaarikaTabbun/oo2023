@@ -1,0 +1,49 @@
+// baasklassi määramine
+class Vehicle {
+  constructor(public make: string, public model: string) {}
+
+  public drive(): void {
+    console.log(`Driving a ${this.make} ${this.model}...`);
+  }
+}
+
+//autode alamklassi määramine
+class Car extends Vehicle {
+  constructor(public make: string, public model: string, public numDoors: number) {
+    super(make, model);
+  }
+
+  public drive(): void {
+    console.log(`Driving a ${this.numDoors}-door ${this.make} ${this.model}...`);
+  }
+}
+
+// veokite alamklass
+class Truck extends Vehicle {
+  constructor(public make: string, public model: string, public payloadCapacity: number) {
+    super(make, model);
+  }
+
+  public drive(): void {
+    console.log(`Driving a ${this.make} ${this.model} with a payload capacity of ${this.payloadCapacity} lbs...`);
+  }
+}
+
+// motikate alamklass
+class Motorcycle extends Vehicle {
+  constructor(public make: string, public model: string, public numWheels: number) {
+    super(make, model);
+  }
+
+  public drive(): void {
+    console.log(`Driving a ${this.numWheels}-wheel ${this.make} ${this.model}...`);
+  }
+}
+
+const car = new Car("Toyota", "Corolla", 4);
+const truck = new Truck("Ford", "F-150", 2000);
+const motorcycle = new Motorcycle("Harley Davidson", "Sportster", 2);
+
+car.drive();
+truck.drive();
+motorcycle.drive();

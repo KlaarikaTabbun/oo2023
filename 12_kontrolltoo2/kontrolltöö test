@@ -1,0 +1,10 @@
+import {Word} from "../kontrolltöö_2";
+
+describe('Word', () => {
+  it('should count the number of occurrences of a letter', () => {
+    const word = new Word('pere');
+    expect(word.count('a')).toEqual(0);
+    expect(word.count('e')).toEqual(2);
+    expect(word.count('p')).toEqual(1);
+  });
+});

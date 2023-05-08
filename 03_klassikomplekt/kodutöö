@@ -1,0 +1,53 @@
+// tooteolemi klass
+class Product {
+  constructor(public id: number, public name: string, public price: number) {}
+}
+
+// tootehoidla klass
+class ProductRepository {
+  private products: Product[] = [];
+
+  public addProduct(product: Product): void {
+    this.products.push(product);
+  }
+
+  public getProducts(): Product[] {
+    return this.products;
+  }
+
+  public getProductById(id: number): Product | undefined {
+    return this.products.find(product => product.id === id);
+  }
+
+  public updateProduct(product: Product): void {
+    const index = this.products.findIndex(p => p.id === product.id);
+    if (index !== -1) {
+      this.products[index] = product;
+    }
+  }
+
+  public deleteProductById(id: number): void {
+    this.products = this.products.filter(product => product.id !== id);
+  }
+}
+
+
+const productRepository = new ProductRepository();
+
+// lisame hoidlasse tooteid
+productRepository.addProduct(new Product(1, "Apple", 1.99));
+productRepository.addProduct(new Product(2, "Banana", 0.99));
+
+// vüta tooted hoidlast
+const products = productRepository.getProducts();
+console.log(products);
+
+// specific toote id
+const product = productRepository.getProductById(1);
+console.log(product);
+
+// värskenda hoidlas olevat toodet
+productRepository.updateProduct(new Product(1, "Gala Apple", 2.49));
+
+// kustuta toode
+productRepository.deleteProductById(2);

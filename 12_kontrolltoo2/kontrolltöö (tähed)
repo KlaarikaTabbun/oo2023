@@ -1,0 +1,65 @@
+interface LetterCounter {
+	count(letter: string): number;
+}
+
+//sõnade klass
+
+class Word implements LetterCounter {
+	private word: string;
+	
+	constructor(word: string) {
+		this.word=word;
+	}
+	
+	count(letter: string): number {
+		let count=0;
+		for (let i=0; i<this.word.length; i++){
+			if(this.word.charAt(i)===letter){
+				count++;
+			}
+		}
+		return count;
+	}
+}
+
+//lausete klass
+
+//class Sentence {
+	//private words: Word[];
+	
+	//constructor(sentence: string){
+		//const wordsArray=sentence.split(" ");
+		//?--?
+	//}
+	
+	//count(letter: string): number {
+		//let count=0;
+		//for(let i=0; i<this.word.length; i++){
+			//count += this.words[i].count(letter);
+		//}
+		//return count;
+	//}
+	
+	//getWordCount(): number {
+		//return this.words.length;
+	//}
+	
+	//getWords(): Word[] {
+		//return this.words;
+	//}
+	
+//}
+
+export {
+	
+	Word
+}
+
+const pere=new Word("pere");
+console.log(pere.count("a"));
+console.log(pere.count("e"));
+console.log(pere.count("p"));
+
+//const sentence=new Sentence("Joonasel on taskus kollane kamm.");
+//console.log(sentence.count("a"));
+//console.log(getWordCount());

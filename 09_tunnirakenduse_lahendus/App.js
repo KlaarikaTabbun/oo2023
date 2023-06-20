@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.css';
-
+//olekumuutujad ja viidete loomine
 function App() {
   const [tooted, setTooted] = useState([]);
   const idRef = useRef();
@@ -8,11 +8,11 @@ function App() {
   const priceRef = useRef();
   const isActiveRef = useRef();
 
-
+//käivitub komponendi laadimisel
   useEffect(() => {
-    fetch("http://localhost:3000/tooted")
+    fetch("http://localhost:3000/tooted")//päring toodete saamiseks
       .then(res => res.json())
-      .then(json => setTooted(json));
+      .then(json => setTooted(json));//seadmine olekumuutujasse
   }, []);
 
   function kustuta(index) {
@@ -21,7 +21,7 @@ function App() {
       .then(json => setTooted(json));
   }
 
-  ////////////////////////
+ 
   function lisa() {
     const uusToode = {
       "id": idRef.current.value,
@@ -33,7 +33,7 @@ function App() {
       .then(res => res.json())
       .then(json => setTooted(json));
   }
-  ////////////////////////
+ 
 
   function dollariteks() {
     const kurss = 1.1;
@@ -41,7 +41,7 @@ function App() {
       .then(res => res.json())
       .then(json => setTooted(json));
   }
-
+//komponendi renderdamine
   return (
     <div className="App">
       <label>ID</label> <br />
